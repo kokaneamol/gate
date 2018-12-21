@@ -110,8 +110,7 @@ public class MainActivity extends AppCompatActivity implements android.support.v
                              thumbUrl = thumb.getString("source");
                         }
                         JSONObject terms = arrayObject.getJSONObject("terms");
-                        JSONObject descJSON = terms.getJSONArray("description").getJSONObject(0);
-                        String desc = descJSON.getString("");
+                        String desc = terms.getString("description");
                         DataModel dataModel = new DataModel(title, desc, thumbUrl);
                         dataModelList.add(dataModel);
 
