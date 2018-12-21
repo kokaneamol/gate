@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements android.support.v
         dataModelList = new ArrayList<DataModel>();
         adapter = new SearcherAdapter(this, dataModelList);
         recyclerView.setAdapter(adapter);
-        recyclerView.set
     }
 
 
