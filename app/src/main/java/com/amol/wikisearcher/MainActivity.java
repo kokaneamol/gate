@@ -3,6 +3,7 @@ package com.amol.wikisearcher;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
@@ -31,10 +32,13 @@ public class MainActivity extends AppCompatActivity implements android.support.v
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.list_r);
+        RecyclerView.LayoutManager recyce = new
+                LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(recyce);
         dataModelList = new ArrayList<DataModel>();
         adapter = new SearcherAdapter(this, dataModelList);
-        recyclerView.setAdapter(adapter);/*
-        adapter.notifyDataSetChanged();*/
+        recyclerView.setAdapter(adapter);
+        recyclerView.set
     }
 
 
@@ -107,7 +111,8 @@ public class MainActivity extends AppCompatActivity implements android.support.v
                              thumbUrl = thumb.getString("source");
                         }
                         JSONObject terms = arrayObject.getJSONObject("terms");
-                        String desc = terms.getString("description");
+                        JSONObject descJSON = terms.getJSONArray("description").getJSONObject(0);
+                        String desc = descJSON.getString("");
                         DataModel dataModel = new DataModel(title, desc, thumbUrl);
                         dataModelList.add(dataModel);
 
